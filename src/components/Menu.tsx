@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Leaf } from 'lucide-react';
 import { fetchMenu, type MenuItem } from '@/lib/supabase';
 import { useReveal } from '@/hooks/useReveal';
+import { cafeConfig } from '@/cafeConfig';
 
 const TABS = [
   { id: 'brunch', label: 'Brunch' },
@@ -21,9 +22,31 @@ export default function Menu() {
   const { ref, visible } = useReveal();
 
   useEffect(() => {
+    // If useConfigMenu is enabled (recommended for cold-call demos), use items from cafeConfig.ts
+    if (cafeConfig.useConfigMenu) {
+      const configItems: MenuItem[] = cafeConfig.menuItems.map((item, idx) => ({
+        ...item,
+        is_signature: item.is_signature ?? false,
+        sort_order: item.sort_order ?? idx + 1,
+      }));
+      setItems(configItems);
+      setLoading(false);
+      return;
+    }
+
+    // Otherwise try fetching from Supabase database with fallback to cafeConfig
     fetchMenu()
-      .then(setItems)
-      .catch(() => setError('We could not load the menu right now. Please try again later.'))
+      .then((data) => {
+        if (data && data.length > 0) {
+          setItems(data);
+        } else {
+          setItems(cafeConfig.menuItems as MenuItem[]);
+        }
+      })
+      .catch(() => {
+        // Graceful fallback to config items so pitch never breaks
+        setItems(cafeConfig.menuItems as MenuItem[]);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -87,6 +110,7 @@ export default function Menu() {
                       src={item.image_url}
                       alt={item.name}
                       loading="lazy"
+                      referrerPolicy="no-referrer"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     {item.is_signature && (

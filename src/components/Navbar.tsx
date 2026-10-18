@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Leaf, ArrowUp } from 'lucide-react';
+import { Menu, X, Leaf } from 'lucide-react';
+import { cafeConfig } from '@/cafeConfig';
 
 const links = [
   { label: 'Story', href: '#story' },
@@ -13,7 +14,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -21,7 +21,6 @@ export default function Navbar() {
       const doc = document.documentElement;
       const max = doc.scrollHeight - window.innerHeight;
       setProgress(max > 0 ? window.scrollY / max : 0);
-      setShowTop(window.scrollY > 700);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -60,7 +59,7 @@ export default function Navbar() {
                 scrolled && !open ? 'text-ink' : 'text-ivory drop-shadow-[0_1px_8px_rgba(28,51,37,0.5)]'
               }`}
             >
-              Kipling Cafe
+              {cafeConfig.name}
             </span>
           </a>
 
@@ -109,7 +108,7 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between px-5 py-5 md:px-10">
-          <span className="font-script text-3xl text-ivory">Kipling Cafe</span>
+          <span className="font-script text-3xl text-ivory">{cafeConfig.name}</span>
           <button
             className="text-ivory"
             onClick={() => setOpen(false)}
@@ -144,7 +143,7 @@ export default function Navbar() {
           }`}
         >
           <p className="font-body text-xs uppercase tracking-widest2 text-sage">
-            Garden Café &amp; Kitchen · Open Daily
+            {cafeConfig.badge}
           </p>
         </div>
       </div>

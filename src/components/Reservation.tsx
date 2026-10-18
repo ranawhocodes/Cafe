@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { CalendarCheck, CheckCircle2, Loader2, Sparkles } from 'lucide-react';
 import { submitReservation } from '@/lib/supabase';
 import { useReveal } from '@/hooks/useReveal';
+import { cafeConfig } from '@/cafeConfig';
 
 const TIME_SLOTS = ['Breakfast · 8–11 AM', 'Lunch · 12–3 PM', 'Evening · 4–7 PM', 'Dinner · 7–11 PM'];
 const OCCASIONS = ['Just coffee', 'Birthday', 'Anniversary', 'Date', 'Work session', 'Family gathering'];
@@ -55,10 +56,11 @@ export default function Reservation() {
             {/* Left panel */}
             <div className="relative bg-gradient-to-br from-leaf to-ink p-10 md:p-12">
               <img
-                src="https://images.pexels.com/photos/30665054/pexels-photo-30665054.jpeg?auto=compress&cs=tinysrgb&w=900"
+                src={cafeConfig.ambienceImages.reservationBg}
                 alt=""
                 className="absolute inset-0 h-full w-full object-cover opacity-25"
                 loading="lazy"
+                referrerPolicy="no-referrer"
               />
               <div className="relative">
                 <Sparkles className="h-8 w-8 text-clay-soft" />

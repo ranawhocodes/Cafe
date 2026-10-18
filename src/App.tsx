@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Story from '@/components/Story';
@@ -7,8 +8,13 @@ import Gallery from '@/components/Gallery';
 import Testimonials from '@/components/Testimonials';
 import Reservation from '@/components/Reservation';
 import Footer from '@/components/Footer';
+import { cafeConfig } from '@/cafeConfig';
 
 function App() {
+  useEffect(() => {
+    document.title = `${cafeConfig.name} | ${cafeConfig.tagline}`;
+  }, []);
+
   return (
     <div className="min-h-screen bg-ivory text-ink">
       <Navbar />

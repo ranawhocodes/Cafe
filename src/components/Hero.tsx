@@ -1,5 +1,6 @@
 import { ChevronDown } from 'lucide-react';
 import { useScrollY } from '@/hooks/useReveal';
+import { cafeConfig } from '@/cafeConfig';
 
 const FLOATING_LEAVES = [
   { left: '8%', top: '18%', size: 26, delay: '0s', dur: '7s' },
@@ -17,7 +18,7 @@ export default function Hero() {
       <div className="absolute inset-0" style={{ transform: `translateY(${scrollY * 0.2}px)` }}>
         <div
           className="absolute inset-0 bg-cover bg-center animate-hero-zoom"
-          style={{ backgroundImage: "url('/kip2.webp')" }}
+          style={{ backgroundImage: `url('${cafeConfig.ambienceImages.heroBg}')` }}
         />
         {/* even dark-green scrim — keeps the photo vivid but text crisp */}
         <div className="absolute inset-0 bg-ink/45" />
@@ -49,15 +50,28 @@ export default function Hero() {
           className="animate-fade-swap mb-5 font-body text-xs font-medium uppercase tracking-widest2 text-sage md:text-sm"
           style={{ animationDelay: '0.35s' }}
         >
-          Garden Café &amp; Kitchen · Open Daily
+          {cafeConfig.badge}
         </p>
 
-        <h1
-          className="animate-fade-swap font-script text-7xl leading-[1.05] text-ivory drop-shadow-[0_2px_18px_rgba(28,51,37,0.55)] sm:text-8xl md:text-[10rem]"
-          style={{ animationDelay: '0.5s' }}
-        >
-          Kipling Cafe
-        </h1>
+        {cafeConfig.logo ? (
+          <div
+            className="animate-fade-swap mx-auto my-3 flex items-center justify-center"
+            style={{ animationDelay: '0.5s' }}
+          >
+            <img
+              src={cafeConfig.logo}
+              alt={cafeConfig.name}
+              className="h-44 w-44 sm:h-56 sm:w-56 md:h-64 md:w-64 rounded-full object-cover shadow-[0_15px_40px_rgba(0,0,0,0.5)] ring-4 ring-ivory/80 transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+        ) : (
+          <h1
+            className="animate-fade-swap font-script text-7xl leading-[1.05] text-ivory drop-shadow-[0_2px_18px_rgba(28,51,37,0.55)] sm:text-8xl md:text-[10rem]"
+            style={{ animationDelay: '0.5s' }}
+          >
+            {cafeConfig.name}
+          </h1>
+        )}
 
         <div
           className="animate-fade-swap mx-auto mt-6 flex max-w-xl items-center gap-4"
@@ -65,7 +79,7 @@ export default function Hero() {
         >
           <span className="h-px flex-1 bg-gradient-to-r from-transparent to-sage/70" />
           <span className="font-display text-xl italic text-ivory/95 drop-shadow-[0_1px_10px_rgba(28,51,37,0.5)] md:text-2xl">
-            where every meal blooms
+            {cafeConfig.tagline}
           </span>
           <span className="h-px flex-1 bg-gradient-to-l from-transparent to-sage/70" />
         </div>
@@ -74,7 +88,7 @@ export default function Hero() {
           className="animate-fade-swap mx-auto mt-5 max-w-xl font-body text-base font-normal leading-relaxed text-ivory/90 drop-shadow-[0_1px_10px_rgba(28,51,37,0.5)] md:text-lg"
           style={{ animationDelay: '1s' }}
         >
-          Coffee brewed slowly, lunch served under a canopy of green.
+          {cafeConfig.subtitle}
         </p>
 
         <div

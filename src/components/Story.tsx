@@ -1,5 +1,6 @@
 import { Coffee, TreePalm, Users, Star } from 'lucide-react';
 import { useReveal, useCountUp } from '@/hooks/useReveal';
+import { cafeConfig } from '@/cafeConfig';
 
 const MARQUEE_WORDS = ['GARDEN FRESH', 'SLOW COFFEE', 'SUNDAY BRUNCH', 'FAIRY-LIT EVENINGS', 'HOMEMADE BAKES'];
 
@@ -65,12 +66,11 @@ export default function Story() {
               <RevealBlock>
                 <p className="font-body text-xs uppercase tracking-widest2 text-leaf">Our Story</p>
                 <h2 className="mt-4 font-display text-4xl font-medium leading-tight text-ink md:text-6xl">
-                  A living room
-                  <span className="block italic text-leaf">built by nature</span>
+                  {cafeConfig.storyHeadline}
+                  <span className="block italic text-leaf">{cafeConfig.storyHighlight}</span>
                 </h2>
                 <p className="mt-6 max-w-md font-body text-base font-light leading-7 text-inklight md:text-lg">
-                  A tiny garden kiosk in 2016 — now a leafy hideaway for slow
-                  coffee and seasonal plates.
+                  {cafeConfig.storyDescription}
                 </p>
               </RevealBlock>
 
@@ -95,26 +95,29 @@ export default function Story() {
                 <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-sage/50 via-transparent to-clay-pale blur-2xl" />
                 <div className="relative">
                   <img
-                    src="/kip.webp"
-                    alt="Kipling Cafe signboard over the garden seating"
+                    src={cafeConfig.ambienceImages.story.main}
+                    alt={`${cafeConfig.name} ambience seating`}
                     className="relative z-10 h-72 w-full rotate-1 rounded-3xl object-cover shadow-2xl transition-transform duration-500 hover:rotate-0 hover:scale-[1.02] md:h-96"
                     loading="lazy"
+                    referrerPolicy="no-referrer"
                   />
                   <img
-                    src="/kip3.webp"
-                    alt="Fairy-lit pathway in the evening"
+                    src={cafeConfig.ambienceImages.story.secondary}
+                    alt="Atmospheric pathway in the evening"
                     className="absolute -bottom-2 -left-4 z-20 h-40 w-44 -rotate-6 rounded-2xl object-cover shadow-xl ring-4 ring-ivory transition-transform duration-500 hover:rotate-0 hover:scale-105 md:h-52 md:w-60"
                     loading="lazy"
+                    referrerPolicy="no-referrer"
                   />
                   <img
-                    src="/kip1.webp"
-                    alt="Palms and warm lamps after sunset"
+                    src={cafeConfig.ambienceImages.story.accent}
+                    alt="Warm lamps and ambience after sunset"
                     className="absolute -right-2 bottom-16 z-20 h-40 w-44 rotate-6 rounded-2xl object-cover shadow-xl ring-4 ring-ivory transition-transform duration-500 hover:rotate-0 hover:scale-105 md:h-52 md:w-60"
                     loading="lazy"
+                    referrerPolicy="no-referrer"
                   />
                   <div className="animate-drift absolute -top-7 right-6 z-30 rounded-2xl bg-clay px-5 py-4 text-center shadow-xl">
                     <p className="font-display text-2xl font-bold text-ivory">since</p>
-                    <p className="font-display text-3xl font-bold text-ivory">2016</p>
+                    <p className="font-display text-3xl font-bold text-ivory">{cafeConfig.sinceYear}</p>
                   </div>
                 </div>
               </div>

@@ -1,17 +1,7 @@
 import { useEffect, useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
-
-const PHOTOS = [
-  '/kip.webp',
-  '/kip2.webp',
-  '/kip1.webp',
-  '/kip3.webp',
-  '/kip4.webp',
-  'https://images.pexels.com/photos/14679166/pexels-photo-14679166.jpeg?auto=compress&cs=tinysrgb&w=1400',
-  'https://images.pexels.com/photos/6327536/pexels-photo-6327536.jpeg?auto=compress&cs=tinysrgb&w=1400',
-  'https://images.pexels.com/photos/8412054/pexels-photo-8412054.jpeg?auto=compress&cs=tinysrgb&w=1400',
-];
+import { cafeConfig } from '@/cafeConfig';
 
 const SPANS = [
   'col-span-2 row-span-2',
@@ -28,16 +18,18 @@ export default function Gallery() {
   const [lightbox, setLightbox] = useState<number | null>(null);
   const { ref, visible } = useReveal();
 
+  const photos = cafeConfig.ambienceImages.gallery;
+
   useEffect(() => {
     if (lightbox === null) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setLightbox(null);
-      if (e.key === 'ArrowRight') setLightbox((v) => (v === null ? null : (v + 1) % PHOTOS.length));
-      if (e.key === 'ArrowLeft') setLightbox((v) => (v === null ? null : (v - 1 + PHOTOS.length) % PHOTOS.length));
+      if (e.key === 'ArrowRight') setLightbox((v) => (v === null ? null : (v + 1) % photos.length));
+      if (e.key === 'ArrowLeft') setLightbox((v) => (v === null ? null : (v - 1 + photos.length) % photos.length));
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [lightbox]);
+  }, [lightbox, photos.length]);
 
   return (
     <section id="gallery" className="relative py-24 md:py-36">
@@ -50,17 +42,18 @@ export default function Gallery() {
         </div>
 
         <div className="mt-14 grid auto-rows-[180px] grid-cols-2 gap-4 sm:auto-rows-[210px] md:grid-cols-4">
-          {PHOTOS.map((src, i) => (
+          {photos.map((src, i) => (
             <button
               key={src}
               onClick={() => setLightbox(i)}
-              className={`group relative overflow-hidden rounded-2xl shadow-md ${SPANS[i]}`}
+              className={`group relative overflow-hidden rounded-2xl shadow-md ${SPANS[i] || ''}`}
               aria-label={`Open photo ${i + 1}`}
             >
               <img
                 src={src}
-                alt={`Kipling Cafe moment ${i + 1}`}
+                alt={`${cafeConfig.name} moment ${i + 1}`}
                 loading="lazy"
+                referrerPolicy="no-referrer"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-ink/0 transition-colors duration-300 group-hover:bg-ink/25" />
@@ -86,7 +79,7 @@ export default function Gallery() {
             className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-ivory/25 p-3 text-ivory transition-colors hover:border-clay-soft hover:text-clay-soft md:left-10"
             onClick={(e) => {
               e.stopPropagation();
-              setLightbox((lightbox - 1 + PHOTOS.length) % PHOTOS.length);
+              setLightbox((lightbox - 1 + photos.length) % photos.length);
             }}
             aria-label="Previous photo"
           >
@@ -94,8 +87,9 @@ export default function Gallery() {
           </button>
           <img
             key={lightbox}
-            src={PHOTOS[lightbox]}
-            alt="Kipling Cafe"
+            src={photos[lightbox]}
+            alt={cafeConfig.name}
+            referrerPolicy="no-referrer"
             className="animate-fade-swap max-h-[85vh] max-w-[90vw] rounded-2xl object-contain shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />
@@ -103,7 +97,7 @@ export default function Gallery() {
             className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-ivory/25 p-3 text-ivory transition-colors hover:border-clay-soft hover:text-clay-soft md:right-10"
             onClick={(e) => {
               e.stopPropagation();
-              setLightbox((lightbox + 1) % PHOTOS.length);
+              setLightbox((lightbox + 1) % photos.length);
             }}
             aria-label="Next photo"
           >

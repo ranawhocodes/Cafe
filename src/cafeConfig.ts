@@ -78,30 +78,30 @@ export const cafeConfig: CafeConfig = {
   // ==========================================================================
   // 🏷️ SECTION 1: CAFE NAME & BRANDING
   // ==========================================================================
-  name: 'The Entrance Cafe',
-  logo: '/logo.jpg', // Put logo image URL or path here (leave empty '' to use written name)
-  tagline: 'step through the archways into slow mornings',
-  subtitle: 'Specialty coffee, all-day brunch, and handcrafted plates tucked off Taylors Road.',
-  badge: 'Courtyard Café & Kitchen · Kilpauk, Chennai',
-  sinceYear: '2023',
+  name: 'Your Cafe Name',
+  logo: '', // Put logo image URL or path here (leave empty '' to use stylish written name)
+  tagline: 'where every cup tells a story',
+  subtitle: 'Specialty coffee, all-day brunch, and handcrafted plates served in a warm, sunlit space.',
+  badge: 'Artisanal Café & Kitchen · Open Daily',
+  sinceYear: '2024',
   storyHeadline: 'A sunlit sanctuary',
-  storyHighlight: 'behind the grand entrance',
+  storyHighlight: 'crafted for slow moments',
   storyDescription:
-    'Tucked along Taylors Road in the heart of Kilpauk, The Entrance Cafe welcomes you through warm archways into a serene hideaway built for unhurried conversations, artisanal pours, and comfort food made from scratch.',
+    'Born from a passion for specialty coffee and scratch-made comfort food, our café welcomes you into a serene hideaway built for unhurried mornings, creative afternoons, and warm evening conversations.',
   shortDescription:
-    'Kilpauk’s serene courtyard café & kitchen where specialty coffee meets unhurried hospitality.',
-  footerQuote: '“Every great conversation begins right at The Entrance.”',
+    'Your neighborhood artisanal café & kitchen where specialty coffee meets unhurried hospitality.',
+  footerQuote: '“Good food, great coffee, and even better company.”',
 
   // ==========================================================================
   // 📍 SECTION 2: ADDRESS & PHONE NUMBER
   // ==========================================================================
   contact: {
-    address: '4, 63, Taylors Rd, Kilpauk, Chennai, Tamil Nadu 600010',
-    phone: '+91 98400 63004',
-    phoneRaw: '+919840063004',
-    email: 'hello@theentrancecafe.in',
-    hours: 'Open daily · 8:30 AM – 10:30 PM',
-    googleMapsUrl: 'https://maps.app.goo.gl/VsHUNc1SWMSKWRWPA',
+    address: '123 High Street, Central District, Your City 100001',
+    phone: '+91 98765 43210',
+    phoneRaw: '+919876543210',
+    email: 'hello@yourcafename.com',
+    hours: 'Open daily · 8:00 AM – 10:30 PM',
+    googleMapsUrl: 'https://maps.google.com',
     social: {
       instagram: 'https://instagram.com',
       facebook: 'https://facebook.com',
@@ -115,13 +115,14 @@ export const cafeConfig: CafeConfig = {
   // ==========================================================================
   ambienceImages: {
     // Main full-screen background image behind the hero header
-    heroBg: '/entrance/hero.jpg',
+    heroBg:
+      'https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?auto=compress&cs=tinysrgb&w=1600',
 
     // 3 overlapping photos for the "Our Story" section
     story: {
       main: 'https://images.pexels.com/photos/2074130/pexels-photo-2074130.jpeg?auto=compress&cs=tinysrgb&w=1400',      // Large top photo (sunlit cafe interior & counter)
-      secondary: '/entrance/story-secondary.jpg', // Left fairy-lit / evening patio vibe
-      accent: 'https://images.pexels.com/photos/683039/pexels-photo-683039.jpeg?auto=compress&cs=tinysrgb&w=1200',     // Right warm lamps / cozy wooden seating
+      secondary: 'https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg?auto=compress&cs=tinysrgb&w=1200', // Left fairy-lit / evening patio vibe
+      accent: 'https://images.pexels.com/photos/683039/pexels-photo-683039.jpeg?auto=compress&cs=tinysrgb&w=1200',      // Right warm lamps / cozy wooden seating
     },
 
     // Background image behind the "Reserve a table" card
@@ -130,14 +131,14 @@ export const cafeConfig: CafeConfig = {
 
     // 8 photos for the photo grid gallery & fullscreen lightbox
     gallery: [
-      '/entrance/gallery-1.jpg',
-      '/entrance/gallery-2.jpg',
-      '/entrance/gallery-3.jpg',
-      '/entrance/gallery-4.jpg',
-      '/entrance/gallery-5.jpg',
-      '/entrance/gallery-6.jpg',
-      '/entrance/gallery-7.jpg',
-      '/entrance/gallery-8.jpg',
+      'https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?auto=compress&cs=tinysrgb&w=1400',
+      'https://images.pexels.com/photos/2074130/pexels-photo-2074130.jpeg?auto=compress&cs=tinysrgb&w=1400',
+      'https://images.pexels.com/photos/683039/pexels-photo-683039.jpeg?auto=compress&cs=tinysrgb&w=1400',
+      'https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg?auto=compress&cs=tinysrgb&w=1400',
+      'https://images.pexels.com/photos/2253643/pexels-photo-2253643.jpeg?auto=compress&cs=tinysrgb&w=1400',
+      'https://images.pexels.com/photos/14679166/pexels-photo-14679166.jpeg?auto=compress&cs=tinysrgb&w=1400',
+      'https://images.pexels.com/photos/6327536/pexels-photo-6327536.jpeg?auto=compress&cs=tinysrgb&w=1400',
+      'https://images.pexels.com/photos/8412054/pexels-photo-8412054.jpeg?auto=compress&cs=tinysrgb&w=1400',
     ],
   },
 
@@ -151,7 +152,7 @@ export const cafeConfig: CafeConfig = {
     {
       id: 'brunch-1',
       category: 'brunch',
-      name: 'Courtyard Avocado Toast',
+      name: 'Artisanal Avocado Toast',
       description: 'Toasted country sourdough, smashed hass avocado, whipped feta, micro greens, chilli oil',
       price: 360,
       image_url: 'https://images.pexels.com/photos/1351238/pexels-photo-1351238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
@@ -161,7 +162,7 @@ export const cafeConfig: CafeConfig = {
     {
       id: 'brunch-2',
       category: 'brunch',
-      name: 'Kilpauk Sunrise Shakshuka',
+      name: 'Classic Sunrise Shakshuka',
       description: 'Slow-simmered spiced tomato & bell pepper ragout, poached eggs, crumbled feta, warm focaccia',
       price: 390,
       image_url: 'https://images.pexels.com/photos/6275158/pexels-photo-6275158.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
@@ -349,7 +350,7 @@ export const cafeConfig: CafeConfig = {
     {
       id: 'drink-1',
       category: 'drinks',
-      name: 'Taylors Road Berry Cooler',
+      name: 'Wild Berry Botanical Cooler',
       description: 'Muddled mixed berries, fresh garden mint, lime, sparkling tonic, and edible botanicals',
       price: 290,
       image_url: 'https://images.pexels.com/photos/36630828/pexels-photo-36630828.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
@@ -369,7 +370,7 @@ export const cafeConfig: CafeConfig = {
     {
       id: 'drink-3',
       category: 'drinks',
-      name: 'Entrance Artisanal Cooler Flight',
+      name: 'Signature Artisanal Cooler Flight',
       description: 'Three chilled tasting pours from our seasonal botanical & cold-brewed artisanal bar menu',
       price: 420,
       image_url: 'https://images.pexels.com/photos/6327536/pexels-photo-6327536.jpeg?auto=compress&cs=tinysrgb&w=1400',
